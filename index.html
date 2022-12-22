@@ -44,7 +44,7 @@
           
                 gltf-model='https://raw.githubusercontent.com/hteshkumar/ar-js-tutorial-1/main/curtain/scene.gltf'
                 scale="50 50 50"
-                position="0 1 -1"
+                position="100 0 0"
                 >
             </a-entity>
         </a-nft>
@@ -52,13 +52,14 @@
     </a-scene>
 
     <script>
+      var audio = new Audio('https://cdn.virtueanalytics.com/cache/hey-there-63200.mp3');
       var el = document.querySelector('#pc');
       el.addEventListener('markerLost', function (evt) {
-    alert('de-attached');
+        audio.pause();
 });
 
 el.addEventListener('markerFound', function (evt) {
-    alert('attached');
+  audio.play();
 });
 
 
