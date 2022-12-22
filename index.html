@@ -30,6 +30,7 @@
     <div>Loading, please wait...</div>
   </div>
     <a-scene
+    fog="type: linear; color: #AAA"
         vr-mode-ui="enabled: false;"
         renderer="logarithmicDepthBuffer: true;"
         embedded arjs='trackingMethod: best; sourceType: webcam; debugUIEnabled: false;'>
@@ -39,12 +40,23 @@
             type='nft' url='https://raw.githubusercontent.com/hteshkumar/ar-js-tutorial-1/main/curtain/curtain-image/image'
             smooth='true' smoothCount='1' smoothTolerance='0.1' smoothThreshold='1'>
             <a-entity
+            child-attached  = "childAttached()"
+            child-detached  = "childDetached()"
                 gltf-model='https://raw.githubusercontent.com/hteshkumar/ar-js-tutorial-1/main/curtain/scene.gltf'
                 scale="50 50 50"
-                position="100 0 0"
+                position="0 1 -1"
                 >
             </a-entity>
         </a-nft>
 		<a-entity camera></a-entity>
     </a-scene>
+
+    <script>
+      function childAttached(){
+        alert('attached');
+      }
+      function childDetached(){
+        alert('de-attached');
+      }
+    </script>
 </body>
