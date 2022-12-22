@@ -37,11 +37,11 @@
 
         <!-- use rawgithack to retrieve the correct url for nft marker (see 'trex' below) -->
         <a-nft
+        id="pc"
             type='nft' url='https://raw.githubusercontent.com/hteshkumar/ar-js-tutorial-1/main/curtain/curtain-image/image'
             smooth='true' smoothCount='1' smoothTolerance='0.1' smoothThreshold='1'>
             <a-entity
-            child-attached  = "childAttached()"
-            child-detached  = "childDetached()"
+          
                 gltf-model='https://raw.githubusercontent.com/hteshkumar/ar-js-tutorial-1/main/curtain/scene.gltf'
                 scale="50 50 50"
                 position="0 1 -1"
@@ -52,11 +52,15 @@
     </a-scene>
 
     <script>
-      function childAttached(){
-        alert('attached');
-      }
-      function childDetached(){
-        alert('de-attached');
-      }
+      var el = document.querySelector('#pc');
+      el.addEventListener('markerLost', function (evt) {
+    alert('de-attached');
+});
+
+el.addEventListener('markerFound', function (evt) {
+    alert('attached');
+});
+
+
     </script>
 </body>
